@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Character Outfit Design Competition - GECM Agency</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .prize-banner {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .prize-banner h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .prizes {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .prize {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            animation: bounceIn 1s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .prize.first { animation-delay: 0.2s; }
+        .prize.second { animation-delay: 0.4s; }
+        .prize.third { animation-delay: 0.6s; }
+
+        .prize-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .prize-amount {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .organizer {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .cta-button:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-button:hover:before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Content Sections */
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+            border-bottom: 3px solid #ffd700;
+            padding-bottom: 10px;
+        }
+
+        .section p, .section li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section li {
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .section li:before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-size: 1.3rem;
+        }
+
+        /* Sparkle Effect */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: scale(1) rotate(180deg); opacity: 0; }
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .prize-banner h2 {
+                font-size: 1.2rem;
+            }
+
+            .prize-amount {
+                font-size: 1.5rem;
+            }
+
+            .prizes {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .section p, .section li {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .organizer {
+                font-size: 1rem;
+            }
+
+            .prize-banner {
+                padding: 10px 15px;
+            }
+
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <div class="hero">
+        <div class="prize-banner">
+            <h2>🏆 Win Big Prizes! 🏆</h2>
+            <div class="prizes">
+                <div class="prize first">
+                    <div class="prize-label">1st Prize</div>
+                    <div class="prize-amount">₹30,000</div>
+                </div>
+                <div class="prize second">
+                    <div class="prize-label">2nd Prize</div>
+                    <div class="prize-amount">₹20,000</div>
+                </div>
+                <div class="prize third">
+                    <div class="prize-label">3rd Prize</div>
+                    <div class="prize-amount">₹10,000</div>
+                </div>
+            </div>
+        </div>
+
+        <h1>Best Character Outfit Design Competition</h1>
+        <p class="organizer">Organized by <strong>Team GECM Agency</strong></p>
+        <a href="#register" class="cta-button"><span>Register Now!</span></a>
+    </div>
+
+    <div class="content">
+        <div class="section">
+            <h2>About the Competition</h2>
+            <p>Team GECM Agency presents the Horror Character Outfit Design Challenge!
+Step into the shadows of creativity and design the most haunting, eerie, and unforgettable horror-themed outfit. Whether your concept is ghostly, demonic, cursed, or undead — we want to see your imagination come alive in the darkest way possible.</p>
+            <p>The top designers will win exciting cash prizes and gain recognition from our creative community for their terrifyingly good work!</p>
+        </div>
+
+        <div class="section">
+            <h2>Rules & Regulations</h2>
+            <ul>
+                <li>Each participant can submit up to 3 horror outfit designs.</li>
+                <li>All designs must be original and created by the participant — no plagiarism or copied content.</li>
+                <li>Outfits should clearly represent a horror theme (ghosts, spirits, monsters, cursed souls, etc.) while maintaining creativity and visual balance.</li>
+                <li>Entries that are off-theme, low effort, or lack originality will not be accepted.</li>
+                <li>Designs must be well-detailed, with thoughtful color choices, shading, and presentation.</li>
+                <li>Submissions must be received before the deadline</li>
+                <li>Participants must play fair — no fake votes, spam, or automation tools.</li>
+                <li>Winners will be chosen based on creativity, horror concept, design quality, and visual storytelling.</li>
+                <li>The decision of the GECM Agency judging panel will be final.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Eligibility</h2>
+            <ul>
+                <li>Open to all artists, designers, and creators.</li>
+                <li>Individual participation only (one person per entry).</li>
+                <li>Participants must provide a valid email, Instagram username, or mobile number for communication.</li>
+                
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>How to Apply</h2>
+            <ul>
+                <li><strong>Step 1:</strong> Fill out the official Google Form for registration.</li>
+                <li><strong>Step 2:</strong> Provide your Name, Email, Instagram username, and Mobile number.</li>
+                <li><strong>Step 3:</strong> Upload your horror outfit designs (up to 3 per participant).</li>
+                <li><strong>Step 4:</strong> Submit your entry before the deadline — late submissions will not be accepted.</li>
+            
+            </ul>
+        
+            <p><strong>Deadline:</strong> Oct 10, 2025</p>
+        </div>
+
+        <div class="section" id="register">
+            <h2>Ready to Participate?</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 25px;">Take the first step towards winning amazing prizes and showcasing your talent to the world!</p>
+            <div style="text-align: center;">
+                <a href="mailto:designs@gecmagency.com?subject=Character%20Outfit%20Design%20Competition%20Registration" class="cta-button"><span>Start Your Registration</span></a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Contact Us</h2>
+            <p><strong>Team GECM Agency</strong></p>
+            <p>Email: gecm.agency@gmail.com</p>
+            <p>Instagram: @gecmagency</p>
+            <p>For queries and support, feel free to reach out to us anytime!</p>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 10 + 5 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Sparkle effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.9) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = e.pageX + 'px';
+                sparkle.style.top = e.pageY + 'px';
+                sparkle.style.width = '10px';
+                sparkle.style.height = '10px';
+                sparkle.style.background = '#ffd700';
+                sparkle.style.borderRadius = '50%';
+                sparkle.style.animation = 'sparkle 0.6s ease-out';
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 600);
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animate sections on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideUp 0.8s ease-out';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
